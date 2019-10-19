@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Создать вариант ответа{% endblock %}
+
+{% block body %}
+    <form action="{% url 'create_choice' poll.pk %}" method="POST">
+        {% include 'partial/simple_form.html' with button_text="Создать вариант" %}
+    </form>
+{% endblock %}

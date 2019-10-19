@@ -1,18 +1,36 @@
 {% extends 'base.html' %}
 
 {% block title %}
+    {{ poll.question }}
 {% endblock %}
 
 {% block body %}
-<div class="card">
-  <div class="card-header">
-    {{ poll.question }}
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>Тут будут варианты...</p>
-      <footer class="blockquote-footer">Дата создания: {{ poll.create_date }}</footer>
-    </blockquote>
-  </div>
-</div>
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ poll.question }}</h3>
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+
+                <ul class="list-group">
+                    <p>Варианты ответов:</p>
+                    {% for choice in poll.choices.all %}
+                        <li class="list-group-item">
+                            <small>{{ choice }}</small>
+                            <p>
+                                <small>
+                                    <a href="{% url 'update_choice' choice.pk %}" class="text-success">Редактировать</a>
+                                    <a href="{% url 'delete_choice' choice.pk %}" class="text-danger ml-2">Удалить</a>
+                                </small>
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+
+                <footer class="modal-footer"><small>Дата создания: {{ poll.create_date }}</small></footer>
+            </blockquote>
+        </div>
+        <a href="{% url 'create_choice' poll.pk %}" class="btn text-center btn-success">Добавить вариант ответа</a>
+    </div>
 {% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Изменить опрос{% endblock %}
+
+{% block body %}
+    <form action="{% url 'update_choice' choice.pk %}" method="POST">
+        {% include 'partial/simple_form.html' with button_text="Редактировать" %}
+    </form>
+{% endblock %}
