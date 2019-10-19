@@ -7,10 +7,11 @@
 {% block body %}
     <h2>{{ poll }}</h2>
     <form action="" method="POST">
-    {% csrf_token %}
+        {% csrf_token %}
         {% for choice in poll.choices.all %}
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="answer" id="answer{{ choice.pk }}" value="{{ choice.pk }}" checked>
+                <input class="form-check-input" type="radio" name="answer" id="answer{{ choice.pk }}"
+                       value="{{ choice.pk }}" checked>
                 <label class="form-check-label" for="answer{{ choice.pk }}">
                     {{ choice }}
                 </label>
