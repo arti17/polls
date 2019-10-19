@@ -10,7 +10,7 @@ class PollView(ListView):
     context_object_name = 'polls'
     model = Poll
     ordering = '-create_date'
-    paginate_by = 3
+    paginate_by = 5
 
 
 class PollDetail(DetailView):

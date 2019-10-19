@@ -13,7 +13,8 @@
                     <h5 class="mb-1"><a href="{% url 'poll_detail' poll.pk %}">{{ poll.question }}</a></h5>
                     <small class="text-center">
                         <a href="{% url 'update_poll' poll.pk %}" class="text-success">Редактировать</a> <br>
-                        <a href="{% url 'delete_poll' poll.pk %}" class="text-danger">Удалить</a>
+                        <a href="{% url 'delete_poll' poll.pk %}" class="text-danger">Удалить</a> <br>
+                        <a href="{% url 'pass_the_poll' poll.pk %}" class="text-primary">Пройти опрос</a>
                     </small>
                 </div>
                 <small>Дата создания: {{ poll.create_date }}</small>
