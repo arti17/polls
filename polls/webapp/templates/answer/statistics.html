@@ -10,8 +10,11 @@
     </p>
     <div class="list-group">
         {% for count_answer in count_answers.items %}
-            <p class="list-group-item"><small>Ответ:</small> {{ count_answer.0 }} - <span
-                    class="text-primary">{{ count_answer.1 }}</span></p>
+            <p class="list-group-item"><small>Ответ:</small> {{ count_answer.0 }}
+                <span
+                    class="text-danger float-right">{{ count_answer.1.0 }} <small class="text-primary">({{ count_answer.1.1 }})%</small>
+                </span>
+            </p>
         {% empty %}
             <p>Этот опрос еще не проходили</p>
             {% if poll.choices.all %}

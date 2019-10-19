@@ -34,8 +34,16 @@ class StatisticsView(View):
         count_answers = {}
         for answer in answers:
             if answer.choice in count_answers:
-                count_answers[answer.choice] += 1
+                count_answers[answer.choice][0] += 1
             else:
-                count_answers[answer.choice] = 1
+                count_answers[answer.choice] = [1]
+
+        count = 0
+        for value in count_answers.values():
+            count += value[0]
+
+        for key, value in count_answers.items():
+            percent = value[0] * 100 / count
+            count_answers[key].append(round(percent, 2))
 
         return render(request, 'answer/statistics.html', {'poll': poll, 'answers': answers, 'count_answers': count_answers})
