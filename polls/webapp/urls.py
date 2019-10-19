@@ -11,4 +11,5 @@ urlpatterns = [
     path('choice/update/<int:pk>', views.ChoiceUpdateView.as_view(), name='update_choice'),
     path('choice/delete/<int:pk>', views.ChoiceDeleteView.as_view(), name='delete_choice'),
     path('pass_the_poll/<int:pk>', views.AnswerView.as_view(), name='pass_the_poll'),
+    path('statistics/<int:pk>', views.StatisticsView.as_view(), name='statistics'),
 ]

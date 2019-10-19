@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Статистика
+{% endblock %}
+
+{% block body %}
+    <p>{{ poll }} <small>Ответов: {{ answers|length }}</small></p>
+    {% for count_answer in count_answers.items %}
+        <p>Ответ: {{ count_answer.0 }} - {{ count_answer.1 }}</p>
+    {% endfor %}
+{% endblock %}

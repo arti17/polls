@@ -24,3 +24,18 @@ class AnswerView(View):
         answer.choice = choice
         answer.save()
         return redirect('index')
+
+
+class StatisticsView(View):
+    def get(self, request, *args, **kwargs):
+        poll_id = kwargs.get('pk')
+        poll = get_object_or_404(Poll, pk=poll_id)
+        answers = Answer.objects.filter(poll=poll_id)
+        count_answers = {}
+        for answer in answers:
+            if answer.choice in count_answers:
+                count_answers[answer.choice] += 1
+            else:
+                count_answers[answer.choice] = 1
+
+        return render(request, 'answer/statistics.html', {'poll': poll, 'answers': answers, 'count_answers': count_answers})
