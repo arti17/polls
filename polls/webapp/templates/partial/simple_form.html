@@ -1,0 +1,19 @@
+{#{% load widget_tweaks %}#}
+{% csrf_token %}
+
+{% for error in form.not_field_errors %}
+    <p class="text-danger">{{ error }}</p>
+{% endfor %}
+
+{% for field in form %}
+    <p class="ml-3 mb-0"><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+    <p class="col-6 ml-0 d-inline-block">{{ field }}</p>
+    {% for error in field.errors %}
+        <small class="text-danger ml-3">{{ error }}</small>
+    {% endfor %}
+{% endfor %}
+
+<p class="ml-3">
+    <input type="submit" value="{{ button_text }}" class="btn btn-success">
+    <a href="{% url 'index' %}" class="btn btn-primary">Отмена</a>
+</p>
